@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { Image } from 'next/image';
 import styles from '../styles/ImageInput.module.css';
 import { SlCloudUpload } from "react-icons/sl";
 
@@ -19,7 +20,7 @@ export default function ImageInput() {
         } else {
             setFile(e.target.files[0]);
         }
-    }, [file]);
+    }, []);
 
     const handleDragIn = useCallback((e) => {
         e.preventDefault();
@@ -66,7 +67,7 @@ export default function ImageInput() {
             dragRef.current.removeEventListener('dragover', handleDrag);
             dragRef.current.removeEventListener('drop', handleDrop);
         }
-    });
+    }, [handleDragIn, handleDragOut, handleDrag, handleDrop]);
 
     useEffect(() => {
         initDragEvents();
@@ -93,7 +94,7 @@ export default function ImageInput() {
                 ref={dragRef}
             >
                 {file !== null ?
-                    <img src={URL.createObjectURL(file)} alt="이미지 미리보기" className={styles.imagePreview} />
+                    <Image src={URL.createObjectURL(file)} alt="이미지 미리보기" className={styles.imagePreview} />
                 : isDragging ?
                     <p className={styles.text}>Drop here</p>
                 : <>
