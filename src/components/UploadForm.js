@@ -1,3 +1,5 @@
+"use client"
+
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import styles from '../styles/UploadForm.module.css';
