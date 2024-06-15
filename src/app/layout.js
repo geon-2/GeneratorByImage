@@ -3,7 +3,6 @@ import '../styles/global.css';
 export const metadata = {
   title: "Auto Meme Generator",
   description: "Create your own memes with this simple meme generator.",
-  googleAdsenseAccount: "ca-pub-7847773430575106",
   viewport: "width=device-width, initial-scale=1",
   openGraph: {
     title: "Auto Meme Generator",
@@ -16,6 +15,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7847773430575106"
+     crossorigin="anonymous"></script>
       <body>
         {children}
       </body>
