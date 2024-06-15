@@ -1,5 +1,6 @@
 import styles from '../styles/Home.module.css';
 import UploadForm from '../components/UploadForm';
+import DisplayAds from '../components/DisplayAds';
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <div>
         <UploadForm />
       </div>
+      <DisplayAds />
     </section>
   );
 }
