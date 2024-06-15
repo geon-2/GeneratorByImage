@@ -1,7 +1,7 @@
 "use client"
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Image } from 'next/image';
+import Image from 'next/image';
 import styles from '../styles/ImageInput.module.css';
 import { SlCloudUpload } from "react-icons/sl";
 
@@ -11,14 +11,12 @@ export default function ImageInput() {
     const [file, setFile] = useState(null);
 
     const onChangeFiles = useCallback((e) => {
-        if (e.target.files.length === 0) {
-            return;
-        }
-
         if (e.type === "drop") {
             setFile(e.dataTransfer.files[0]);
         } else {
-            setFile(e.target.files[0]);
+            if (e.target.files.length !== 0) {
+                setFile(e.target.files[0]);
+            }
         }
     }, []);
 
@@ -94,7 +92,7 @@ export default function ImageInput() {
                 ref={dragRef}
             >
                 {file !== null ?
-                    <Image src={URL.createObjectURL(file)} alt="이미지 미리보기" className={styles.imagePreview} />
+                    <Image src={URL.createObjectURL(file)} alt="이미지 미리보기" className={styles.imagePreview} width="300" height="300" />
                 : isDragging ?
                     <p className={styles.text}>Drop here</p>
                 : <>
